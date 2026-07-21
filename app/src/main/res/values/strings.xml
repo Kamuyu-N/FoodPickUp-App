@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FoodPickupApp</string>
+    <string name="subtitle_university_food_ordering">University Food Ordering</string>
+    <string name="initializing_database">Initializing database…</string>
+    <string name="db_success">✓ Database initialized successfully</string>
+    <string name="db_error">✗ Database initialization failed</string>
 </resources>
