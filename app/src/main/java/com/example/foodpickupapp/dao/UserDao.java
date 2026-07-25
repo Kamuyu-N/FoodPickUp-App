@@ -171,6 +171,30 @@ public class UserDao {
     }
 
     /**
+     * Updates a user's password. Generates a new salt and re-hashes.
+     * Used by the password reset feature (FOOD-7).
+     *
+     * @param userId          the ID of the user whose password to update
+     * @param newPlainPassword the new plaintext password (will be hashed)
+     * @return the number of rows affected
+     */
+    public int updatePassword(long userId, String newPlainPassword) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        String salt = PasswordUtils.generateSalt();
+        String passwordHash = PasswordUtils.hashPassword(newPlainPassword, salt);
+
+        ContentValues values = new ContentValues();
+        values.put(UserEntry.COLUMN_PASSWORD_HASH, passwordHash);
+        values.put(UserEntry.COLUMN_SALT, salt);
+
+        String selection = UserEntry._ID + " = ?";
+        String[] selectionArgs = { String.valueOf(userId) };
+
+        return db.update(UserEntry.TABLE_NAME, values, selection, selectionArgs);
+    }
+
+    /**
      * Helper method to convert a database cursor row into a User object.
      */
     private User cursorToUser(Cursor cursor) {

@@ -4,4 +4,60 @@
     <string name="initializing_database">Initializing database…</string>
     <string name="db_success">✓ Database initialized successfully</string>
     <string name="db_error">✗ Database initialization failed</string>
+
+    <!-- Login (FOOD-6) -->
+    <string name="login_title">Login</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="link_forgot_password">Forgot Password?</string>
+    <string name="link_register">Don\'t have an account? Register</string>
+    <string name="error_empty_email">Please enter your email</string>
+    <string name="error_empty_password">Please enter your password</string>
+    <string name="error_invalid_credentials">Invalid email or password</string>
+    <string name="login_success">Login successful!</string>
+
+    <!-- Registration (FOOD-5) -->
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Register with your university email</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="btn_register">Register</string>
+    <string name="link_login">Already have an account? Login</string>
+    <string name="helper_university_email">Use your university email (.edu, .ac.*)</string>
+    <string name="error_invalid_university_email">Please use a valid university email (.edu, .ac.*)</string>
+    <string name="error_password_too_weak">Min 8 chars with 1 uppercase, 1 lowercase, and 1 digit</string>
+    <string name="error_passwords_not_matching">Passwords do not match</string>
+    <string name="error_email_already_registered">This email is already registered</string>
+    <string name="success_registration">Registration successful! Please login.</string>
+    <string name="error_registration_failed">Registration failed. Please try again.</string>
+
+    <!-- Forgot Password (FOOD-7) -->
+    <string name="forgot_password_title">Reset Password</string>
+    <string name="forgot_password_instructions">Enter your registered email to reset your password.</string>
+    <string name="forgot_password_step2_instructions">Enter your new password below.</string>
+    <string name="btn_verify_email">Verify Email</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_new_password">Confirm New Password</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="link_back_to_login">Back to Login</string>
+    <string name="error_email_not_found">No account found with this email</string>
+    <string name="success_password_reset">Password reset successful! Please login.</string>
+    <string name="error_password_reset_failed">Password reset failed. Please try again.</string>
+
+    <!-- Admin Staff Creation (FOOD-8) -->
+    <string name="admin_create_staff_title">Create Staff Account</string>
+    <string name="admin_create_staff_subtitle">Set up a new cafeteria worker account</string>
+    <string name="hint_staff_email">Staff Email</string>
+    <string name="hint_staff_password">Temporary Password</string>
+    <string name="label_select_restaurant">Assign to Restaurant</string>
+    <string name="spinner_select_prompt">-- Select Restaurant --</string>
+    <string name="btn_create_staff">Create Staff Account</string>
+    <string name="error_select_restaurant">Please select a restaurant</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_admin_only">Admin access required</string>
+    <string name="success_staff_created_details">✓ Staff account created!\nEmail: %1$s\nRestaurant: %2$s</string>
+    <string name="error_staff_creation_failed">Failed to create staff account. Please try again.</string>
+
+    <!-- General -->
+    <string name="logout">Logout</string>
 </resources>
