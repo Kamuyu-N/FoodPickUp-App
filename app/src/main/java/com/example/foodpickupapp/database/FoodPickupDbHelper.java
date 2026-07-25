@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.foodpickupapp.database.DatabaseContract.UserEntry;
+import com.example.foodpickupapp.util.PasswordUtils;
+
 import com.example.foodpickupapp.database.DatabaseContract.RestaurantEntry;
 import com.example.foodpickupapp.database.DatabaseContract.FoodItemEntry;
 import com.example.foodpickupapp.database.DatabaseContract.OrderEntry;
@@ -145,7 +147,10 @@ public class FoodPickupDbHelper extends SQLiteOpenHelper {
         // Seed the 3 restaurant locations
         seedRestaurants(db);
 
-        Log.d(TAG, "Database tables created and restaurants seeded successfully.");
+        // Seed the default admin account (FOOD-8)
+        seedAdminUser(db);
+
+        Log.d(TAG, "Database tables created and data seeded successfully.");
     }
 
     @Override
@@ -193,5 +198,23 @@ public class FoodPickupDbHelper extends SQLiteOpenHelper {
         values.put(RestaurantEntry.COLUMN_NAME, name);
         values.put(RestaurantEntry.COLUMN_LOCATION_CODE, locationCode);
         db.insert(RestaurantEntry.TABLE_NAME, null, values);
+    }
+
+    /**
+     * Seeds a default admin account so the admin features (FOOD-8) are usable on first launch.
+     * Credentials: admin@foodpickup.edu / Admin123!
+     * Called only once during initial database creation.
+     */
+    private void seedAdminUser(SQLiteDatabase db) {
+        String salt = PasswordUtils.generateSalt();
+        String passwordHash = PasswordUtils.hashPassword("Admin123!", salt);
+
+        ContentValues values = new ContentValues();
+        values.put(UserEntry.COLUMN_EMAIL, "admin@foodpickup.edu");
+        values.put(UserEntry.COLUMN_PASSWORD_HASH, passwordHash);
+        values.put(UserEntry.COLUMN_SALT, salt);
+        values.put(UserEntry.COLUMN_ROLE, "ADMIN");
+        db.insert(UserEntry.TABLE_NAME, null, values);
+        Log.d(TAG, "Seeded default admin account (admin@foodpickup.edu).");
     }
 }
