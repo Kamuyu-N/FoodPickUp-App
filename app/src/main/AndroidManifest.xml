@@ -54,6 +54,13 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.FoodPickupApp"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Menu screen (FOOD-11) -->
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false"
+            android:label="@string/menu_title"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

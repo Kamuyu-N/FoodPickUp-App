@@ -58,6 +58,11 @@
     <string name="success_staff_created_details">✓ Staff account created!\nEmail: %1$s\nRestaurant: %2$s</string>
     <string name="error_staff_creation_failed">Failed to create staff account. Please try again.</string>
 
+    <!-- Menu (FOOD-11) -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_empty">No items available</string>
+    <string name="view_menu">View Menu</string>
+
     <!-- General -->
     <string name="logout">Logout</string>
 </resources>
