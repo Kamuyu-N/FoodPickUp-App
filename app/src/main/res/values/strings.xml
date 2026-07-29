@@ -58,6 +58,27 @@
     <string name="success_staff_created_details">✓ Staff account created!\nEmail: %1$s\nRestaurant: %2$s</string>
     <string name="error_staff_creation_failed">Failed to create staff account. Please try again.</string>
 
+    <!-- Cart (FOOD-12, FOOD-13) -->
+    <string name="cart_title">Your Cart</string>
+    <string name="cart_empty">Your cart is empty</string>
+    <string name="btn_add_to_cart">Add</string>
+    <string name="btn_view_cart">View Cart (%1$d)</string>
+    <string name="added_to_cart">Added to cart</string>
+    <string name="cart_item_subtotal">Subtotal: $%1$.2f</string>
+    <string name="cart_total">Total: $%1$.2f</string>
+    <string name="btn_proceed_checkout">Proceed to Checkout</string>
+    <string name="btn_remove_item">Remove</string>
+
+    <!-- Checkout (FOOD-14) -->
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_order_summary">Order Summary</string>
+    <string name="checkout_item_line">%1$s  ×%2$d — $%3$.2f</string>
+    <string name="checkout_total">Total: $%1$.2f</string>
+    <string name="btn_confirm_order">Confirm Order</string>
+    <string name="order_confirmed">Order placed successfully!</string>
+    <string name="order_failed">Failed to place order. Please try again.</string>
+    <string name="cart_empty_cannot_checkout">Your cart is empty</string>
+
     <!-- General -->
     <string name="logout">Logout</string>
 </resources>
