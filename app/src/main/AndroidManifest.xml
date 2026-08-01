@@ -33,6 +33,27 @@
             android:label="@string/register_title"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Menu screen (FOOD-11) -->
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false"
+            android:label="@string/menu_title"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Cart screen (FOOD-12, FOOD-13) -->
+        <activity
+            android:name=".CartActivity"
+            android:exported="false"
+            android:label="@string/cart_title"
+            android:parentActivityName=".MenuActivity" />
+
+        <!-- Checkout screen (FOOD-14) -->
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:label="@string/checkout_title"
+            android:parentActivityName=".CartActivity" />
+
         <!-- Password reset screen (FOOD-7) -->
         <activity
             android:name=".ForgotPasswordActivity"
