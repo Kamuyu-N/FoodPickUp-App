@@ -17,7 +17,7 @@ public final class DatabaseContract {
 
     // Database name and version
     public static final String DATABASE_NAME = "food_pickup.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
     // Private constructor to prevent instantiation
     private DatabaseContract() {}

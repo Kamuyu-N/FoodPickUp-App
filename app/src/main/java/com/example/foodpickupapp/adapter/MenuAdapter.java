@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodpickupapp.R;
 import com.example.foodpickupapp.model.FoodItem;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,32 +17,13 @@ import java.util.Locale;
 
 /**
  * RecyclerView adapter that displays a list of available food items.
- * Each row shows the item name, description, price, category, and
- * an "Add to Cart" button.
+ * Each row shows the item name, description, price, and category.
  *
  * Related to: FOOD-11 (student sees a list of available food with prices)
- *             FOOD-12 (student can add items to a cart)
  */
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
     private List<FoodItem> items = new ArrayList<>();
-    private OnItemAddedToCartListener listener;
-
-    /**
-     * Listener interface for the "Add to Cart" button click.
-     */
-    public interface OnItemAddedToCartListener {
-        void onAddToCart(FoodItem item);
-    }
-
-    /**
-     * Sets the listener that will be notified when a user taps "Add to Cart".
-     *
-     * @param listener the callback listener
-     */
-    public void setOnItemAddedToCartListener(OnItemAddedToCartListener listener) {
-        this.listener = listener;
-    }
 
     @NonNull
     @Override
@@ -68,16 +48,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         } else {
             holder.textCategory.setVisibility(View.GONE);
         }
-
-        // Wire the Add to Cart button (FOOD-12)
-        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onAddToCart(item);
-                }
-            }
-        });
     }
 
     @Override
@@ -104,7 +74,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         final TextView textDescription;
         final TextView textPrice;
         final TextView textCategory;
-        final MaterialButton btnAddToCart;
 
         MenuViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -112,7 +81,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             textDescription = itemView.findViewById(R.id.textItemDescription);
             textPrice = itemView.findViewById(R.id.textItemPrice);
             textCategory = itemView.findViewById(R.id.textItemCategory);
-            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }
     }
 }
