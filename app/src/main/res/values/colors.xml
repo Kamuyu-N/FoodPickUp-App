@@ -24,4 +24,9 @@
     <color name="status_connector_done">#FF4CAF50</color>
     <color name="status_connector_pending">#FFE0E0E0</color>
     <color name="status_message_bg">#FFF3E5F5</color>
+
+    <!-- Payment colors (FOOD-15, FOOD-16) -->
+    <color name="payment_success_green">#FF4CAF50</color>
+    <color name="payment_success_bg">#FFE8F5E9</color>
+    <color name="payment_card_bg">#FFFAFAFA</color>
 </resources>
