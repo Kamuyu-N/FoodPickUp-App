@@ -54,6 +54,13 @@
             android:label="@string/checkout_title"
             android:parentActivityName=".CartActivity" />
 
+        <!-- Order status screen (FOOD-21) -->
+        <activity
+            android:name=".OrderStatusActivity"
+            android:exported="false"
+            android:label="@string/order_status_title"
+            android:parentActivityName=".MainActivity" />
+
         <!-- Password reset screen (FOOD-7) -->
         <activity
             android:name=".ForgotPasswordActivity"
