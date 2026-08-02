@@ -60,6 +60,8 @@
 
     <!-- Menu (FOOD-11) -->
     <string name="menu_title">Menu</string>
+    <string name="checkout_title">Checkout</string>
+    <string name="kitchen_dashboard_title">Kitchen Dashboard</string>
     <string name="menu_empty">No items available</string>
     <string name="view_menu">View Menu</string>
 

@@ -54,6 +54,12 @@
             android:label="@string/checkout_title"
             android:parentActivityName=".CartActivity" />
 
+        <!-- Kitchen dashboard screen -->
+        <activity
+            android:name=".KitchenDashboardActivity"
+            android:exported="false"
+            android:label="@string/kitchen_dashboard_title" />
+
         <!-- Password reset screen (FOOD-7) -->
         <activity
             android:name=".ForgotPasswordActivity"

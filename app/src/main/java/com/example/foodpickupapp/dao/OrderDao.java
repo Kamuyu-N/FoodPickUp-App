@@ -199,6 +199,36 @@ public class OrderDao {
     }
 
     /**
+     * Retrieves all active orders (PAID or PREPARING).
+     * Ordered by creation date, oldest first, so staff prepares them in order.
+     *
+     * @return a list of active orders
+     */
+    public List<Order> getActiveOrders() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String selection = OrderEntry.COLUMN_STATUS + " = ? OR " + OrderEntry.COLUMN_STATUS + " = ?";
+        String[] selectionArgs = { "PAID", "PREPARING" };
+        String orderBy = OrderEntry.COLUMN_CREATED_AT + " ASC";
+
+        Cursor cursor = db.query(
+                OrderEntry.TABLE_NAME,
+                null,
+                selection,
+                selectionArgs,
+                null, null,
+                orderBy
+        );
+
+        List<Order> orders = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            orders.add(cursorToOrder(cursor));
+        }
+        cursor.close();
+        return orders;
+    }
+
+    /**
      * Updates the status of an order.
      * Valid statuses: PLACED, PAID, PREPARING, READY, PICKED_UP
      *

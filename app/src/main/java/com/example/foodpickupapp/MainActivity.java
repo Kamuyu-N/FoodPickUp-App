@@ -71,6 +71,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, MenuActivity.class));
         });
 
+        // Set up "Kitchen Dashboard" button (FOOD-18)
+        MaterialButton btnKitchenDashboard = findViewById(R.id.btnKitchenDashboard);
+        if ("STAFF".equals(sessionManager.getUserRole())) {
+            btnKitchenDashboard.setVisibility(android.view.View.VISIBLE);
+            btnKitchenDashboard.setOnClickListener(v -> {
+                startActivity(new Intent(MainActivity.this, KitchenDashboardActivity.class));
+            });
+        } else {
+            btnKitchenDashboard.setVisibility(android.view.View.GONE);
+        }
+
         // Set up logout button if it exists in the layout
         MaterialButton btnLogout = findViewById(R.id.btnLogout);
         if (btnLogout != null) {
