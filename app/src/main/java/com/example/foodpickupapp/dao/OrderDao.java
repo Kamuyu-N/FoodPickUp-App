@@ -222,6 +222,31 @@ public class OrderDao {
     }
 
     /**
+     * Updates the status and payment reference of an order after payment.
+     * Used by PaymentActivity to record the transaction reference from
+     * the payment gateway.
+     *
+     * @param orderId          the order ID
+     * @param newStatus        the new status (typically "PAID")
+     * @param paymentReference the transaction reference from the payment gateway
+     * @return the number of rows affected
+     *
+     * Related to: FOOD-15 (payment API integration)
+     */
+    public int updateOrderPayment(long orderId, String newStatus, String paymentReference) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(OrderEntry.COLUMN_STATUS, newStatus);
+        values.put(OrderEntry.COLUMN_PAYMENT_REFERENCE, paymentReference);
+
+        String selection = OrderEntry._ID + " = ?";
+        String[] selectionArgs = { String.valueOf(orderId) };
+
+        return db.update(OrderEntry.TABLE_NAME, values, selection, selectionArgs);
+    }
+
+    /**
      * Helper method to convert a database cursor row into an Order object.
      */
     private Order cursorToOrder(Cursor cursor) {

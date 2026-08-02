@@ -54,6 +54,19 @@
             android:label="@string/checkout_title"
             android:parentActivityName=".CartActivity" />
 
+        <!-- Payment screen (FOOD-15) -->
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:label="@string/payment_title"
+            android:parentActivityName=".CheckoutActivity" />
+
+        <!-- Payment success screen (FOOD-16) -->
+        <activity
+            android:name=".PaymentSuccessActivity"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
+
         <!-- Order status screen (FOOD-21) -->
         <activity
             android:name=".OrderStatusActivity"

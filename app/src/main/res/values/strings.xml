@@ -83,6 +83,33 @@
     <string name="order_failed">Failed to place order. Please try again.</string>
     <string name="cart_empty_cannot_checkout">Your cart is empty</string>
 
+    <!-- Payment (FOOD-15) -->
+    <string name="payment_title">Payment</string>
+    <string name="payment_amount_label">Amount to Pay</string>
+    <string name="payment_amount_value">$%1$.2f</string>
+    <string name="payment_card_section">Card Details</string>
+    <string name="hint_card_number">Card Number</string>
+    <string name="hint_expiry_date">MM/YY</string>
+    <string name="hint_cvv">CVV</string>
+    <string name="btn_pay_now">Pay $%1$.2f</string>
+    <string name="payment_processing">Processing payment…</string>
+    <string name="payment_secure_note">🔒 Your payment is secure and encrypted</string>
+    <string name="error_invalid_card_number">Enter a valid 16-digit card number</string>
+    <string name="error_invalid_expiry">Enter a valid expiry date (MM/YY)</string>
+    <string name="error_invalid_cvv">Enter a valid 3-digit CVV</string>
+    <string name="payment_failed">Payment failed: %1$s</string>
+    <string name="payment_error_generic">Something went wrong. Please try again.</string>
+
+    <!-- Payment Success (FOOD-16) -->
+    <string name="payment_success_title">Payment Successful!</string>
+    <string name="payment_success_subtitle">Your order has been confirmed</string>
+    <string name="payment_success_order_label">Order Number</string>
+    <string name="payment_success_order_value">Order #%1$d</string>
+    <string name="payment_success_txn_label">Transaction Reference</string>
+    <string name="payment_success_amount_label">Amount Paid</string>
+    <string name="payment_success_amount_value">$%1$.2f</string>
+    <string name="btn_view_order_status">View Order Status</string>
+
     <!-- Order Status (FOOD-21) -->
     <string name="order_status_title">Order Status</string>
     <string name="order_id_label">Order #%1$d</string>
