@@ -58,6 +58,10 @@
     <string name="success_staff_created_details">✓ Staff account created!\nEmail: %1$s\nRestaurant: %2$s</string>
     <string name="error_staff_creation_failed">Failed to create staff account. Please try again.</string>
 
+    <!-- Menu (FOOD-11) -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_empty">No items available</string>
+
     <!-- Cart (FOOD-12, FOOD-13) -->
     <string name="cart_title">Your Cart</string>
     <string name="cart_empty">Your cart is empty</string>
@@ -78,6 +82,31 @@
     <string name="order_confirmed">Order placed successfully!</string>
     <string name="order_failed">Failed to place order. Please try again.</string>
     <string name="cart_empty_cannot_checkout">Your cart is empty</string>
+
+    <!-- Order Status (FOOD-21) -->
+    <string name="order_status_title">Order Status</string>
+    <string name="order_id_label">Order #%1$d</string>
+    <string name="order_placed_at">Placed: %1$s</string>
+    <string name="order_total_label">Total: $%1$.2f</string>
+    <string name="order_status_placed">Order Placed</string>
+    <string name="order_status_paid">Payment Confirmed</string>
+    <string name="order_status_preparing">Preparing Your Order</string>
+    <string name="order_status_ready">Ready for Pickup!</string>
+    <string name="order_status_picked_up">Picked Up</string>
+    <string name="order_status_desc_placed">Your order has been received by the café.</string>
+    <string name="order_status_desc_paid">Payment has been confirmed.</string>
+    <string name="order_status_desc_preparing">The kitchen is preparing your food.</string>
+    <string name="order_status_desc_ready">Head to the café to collect your order!</string>
+    <string name="order_status_desc_picked_up">Order complete. Enjoy your meal!</string>
+    <string name="order_status_msg_placed">Sit tight! Your order has been placed and is awaiting confirmation.</string>
+    <string name="order_status_msg_paid">Payment received. The kitchen will start preparing your order soon.</string>
+    <string name="order_status_msg_preparing">Your food is being freshly prepared. We\'ll let you know when it\'s ready!</string>
+    <string name="order_status_msg_ready">🎉 Your order is ready! Walk to the café to pick it up.</string>
+    <string name="order_status_msg_picked_up">✅ All done! Thanks for your order. Enjoy your meal!</string>
+    <string name="btn_back_to_menu">Back to Menu</string>
+    <string name="btn_refresh_status">Refresh</string>
+    <string name="order_not_found">Order not found</string>
+    <string name="status_auto_refresh">Auto-refreshing every 5s</string>
 
     <!-- General -->
     <string name="logout">Logout</string>
