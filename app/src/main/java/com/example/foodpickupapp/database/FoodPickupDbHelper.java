@@ -150,6 +150,9 @@ public class FoodPickupDbHelper extends SQLiteOpenHelper {
         // Seed the default admin account (FOOD-8)
         seedAdminUser(db);
 
+        // Seed sample menu items so students can browse the menu (FOOD-11)
+        seedFoodItems(db);
+
         Log.d(TAG, "Database tables created and data seeded successfully.");
     }
 
@@ -216,5 +219,47 @@ public class FoodPickupDbHelper extends SQLiteOpenHelper {
         values.put(UserEntry.COLUMN_ROLE, "ADMIN");
         db.insert(UserEntry.TABLE_NAME, null, values);
         Log.d(TAG, "Seeded default admin account (admin@foodpickup.edu).");
+    }
+
+    /**
+     * Seeds sample food items so students can browse the menu on first launch.
+     * Distributes items across the 3 seeded restaurants.
+     *
+     * Restaurant IDs (based on insertion order in seedRestaurants):
+     *   1 = Paul's Cafe, 2 = Sironi (Freida), 3 = Sironi (SSHS)
+     *
+     * Related to: FOOD-11 (student sees a list of available food with prices)
+     */
+    private void seedFoodItems(SQLiteDatabase db) {
+        // Paul's Cafe (restaurant_id = 1)
+        insertFoodItem(db, 1, "Classic Burger", "Beef patty with lettuce, tomato, and cheese", 5.99, "Main");
+        insertFoodItem(db, 1, "Caesar Salad", "Romaine lettuce, croutons, and parmesan", 4.49, "Salad");
+        insertFoodItem(db, 1, "French Fries", "Crispy golden fries with ketchup", 2.99, "Side");
+
+        // Sironi (Freida) (restaurant_id = 2)
+        insertFoodItem(db, 2, "Margherita Pizza", "Tomato sauce, mozzarella, and fresh basil", 7.49, "Main");
+        insertFoodItem(db, 2, "Lemonade", "Freshly squeezed lemonade", 2.49, "Drink");
+
+        // Sironi (SSHS) (restaurant_id = 3)
+        insertFoodItem(db, 3, "Grilled Chicken Wrap", "Chicken breast with veggies in a tortilla", 6.49, "Main");
+        insertFoodItem(db, 3, "Chocolate Brownie", "Rich chocolate brownie with walnuts", 3.49, "Dessert");
+        insertFoodItem(db, 3, "Iced Coffee", "Cold-brewed coffee served over ice", 3.29, "Drink");
+
+        Log.d(TAG, "Seeded 8 sample food items across 3 restaurants.");
+    }
+
+    /**
+     * Helper method to insert a single food item record.
+     */
+    private void insertFoodItem(SQLiteDatabase db, long restaurantId, String name,
+                                String description, double price, String category) {
+        ContentValues values = new ContentValues();
+        values.put(FoodItemEntry.COLUMN_RESTAURANT_ID, restaurantId);
+        values.put(FoodItemEntry.COLUMN_NAME, name);
+        values.put(FoodItemEntry.COLUMN_DESCRIPTION, description);
+        values.put(FoodItemEntry.COLUMN_PRICE, price);
+        values.put(FoodItemEntry.COLUMN_CATEGORY, category);
+        values.put(FoodItemEntry.COLUMN_IS_AVAILABLE, 1);
+        db.insert(FoodItemEntry.TABLE_NAME, null, values);
     }
 }

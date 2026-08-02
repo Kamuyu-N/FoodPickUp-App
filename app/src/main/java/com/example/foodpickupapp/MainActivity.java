@@ -20,7 +20,7 @@ import java.util.List;
  *
  * Requires an active session — redirects to LoginActivity if not logged in.
  *
- * TODO: In Sprint 4, add navigation to the menu UI (FOOD-11)
+ * Ticket refs: FOOD-11 (View Menu navigation)
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textDbStatus.setText(R.string.db_error);
         }
+
+        // Set up "View Menu" button — navigates to MenuActivity (FOOD-11)
+        MaterialButton btnViewMenu = findViewById(R.id.btnViewMenu);
+        btnViewMenu.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MenuActivity.class));
+        });
 
         // Set up logout button if it exists in the layout
         MaterialButton btnLogout = findViewById(R.id.btnLogout);

@@ -115,6 +115,38 @@ public class FoodItemDao {
     }
 
     /**
+     * Retrieves all available food items across all restaurants.
+     * Items are ordered by category and then by name.
+     *
+     * Related to: FOOD-11 (student sees a list of available food with prices)
+     *
+     * @return a list of all available food items
+     */
+    public List<FoodItem> getAllAvailableItems() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String selection = FoodItemEntry.COLUMN_IS_AVAILABLE + " = ?";
+        String[] selectionArgs = { "1" };
+        String orderBy = FoodItemEntry.COLUMN_CATEGORY + " ASC, " + FoodItemEntry.COLUMN_NAME + " ASC";
+
+        Cursor cursor = db.query(
+                FoodItemEntry.TABLE_NAME,
+                null,
+                selection,
+                selectionArgs,
+                null, null,
+                orderBy
+        );
+
+        List<FoodItem> items = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            items.add(cursorToFoodItem(cursor));
+        }
+        cursor.close();
+        return items;
+    }
+
+    /**
      * Retrieves a single food item by its ID.
      *
      * @param id the food item ID

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".MenuActivity">
 
@@ -24,7 +25,6 @@
         android:id="@+id/textMenuEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:gravity="center"
         android:text="@string/menu_empty"
         android:textSize="16sp"
@@ -36,23 +36,8 @@
         android:id="@+id/recyclerMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:paddingBottom="80dp" />
+        android:paddingBottom="16dp" />
 
-    <!-- View Cart FAB (FOOD-12) — shown when cart has items -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnViewCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="@string/btn_proceed_checkout"
-        android:textAllCaps="false"
-        app:cornerRadius="24dp"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:visibility="gone" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
