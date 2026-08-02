@@ -12,4 +12,23 @@
     <color name="price_green">#FF2E7D32</color>
     <color name="card_background">#FFF5F5F5</color>
     <color name="category_text">#FF757575</color>
+
+    <!-- Cart UI colors (FOOD-12, FOOD-13) -->
+    <color name="remove_red">#FFD32F2F</color>
+    <color name="quantity_btn_bg">#FFE0E0E0</color>
+    <color name="checkout_bg">#FFF9F9F9</color>
+
+    <!-- Order status stepper colors (FOOD-21) -->
+    <color name="status_completed">#FF4CAF50</color>
+    <color name="status_current">#FF6200EE</color>
+    <color name="status_current_ring">#336200EE</color>
+    <color name="status_pending">#FFBDBDBD</color>
+    <color name="status_connector_done">#FF4CAF50</color>
+    <color name="status_connector_pending">#FFE0E0E0</color>
+    <color name="status_message_bg">#FFF3E5F5</color>
+
+    <!-- Payment colors (FOOD-15, FOOD-16) -->
+    <color name="payment_success_green">#FF4CAF50</color>
+    <color name="payment_success_bg">#FFE8F5E9</color>
+    <color name="payment_card_bg">#FFFAFAFA</color>
 </resources>

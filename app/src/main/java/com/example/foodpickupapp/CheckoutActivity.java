@@ -126,12 +126,11 @@ public class CheckoutActivity extends AppCompatActivity {
         long orderId = orderDao.insertOrder(order, orderItems);
 
         if (orderId != -1) {
-            // Success — clear cart and go back to main
-            cartManager.clearCart();
-            Toast.makeText(this, R.string.order_confirmed, Toast.LENGTH_LONG).show();
-
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            // Success — navigate to PaymentActivity for payment processing (FOOD-15)
+            // Cart clearing is deferred until payment completes successfully
+            Intent intent = new Intent(this, PaymentActivity.class);
+            intent.putExtra(PaymentActivity.EXTRA_ORDER_ID, orderId);
+            intent.putExtra(PaymentActivity.EXTRA_TOTAL_AMOUNT, cartManager.getTotal());
             startActivity(intent);
             finish();
         } else {

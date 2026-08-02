@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!-- Left column: circle indicator + connector line -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginEnd="16dp">
+
+        <!-- Status circle indicator -->
+        <View
+            android:id="@+id/viewStatusCircle"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_status_pending" />
+
+        <!-- Connector line (hidden for the last step) -->
+        <View
+            android:id="@+id/viewConnectorLine"
+            android:layout_width="3dp"
+            android:layout_height="32dp"
+            android:background="@color/status_pending" />
+
+    </LinearLayout>
+
+    <!-- Right column: status label + description -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/textStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/status_pending" />
+
+        <TextView
+            android:id="@+id/textStatusDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/category_text"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
