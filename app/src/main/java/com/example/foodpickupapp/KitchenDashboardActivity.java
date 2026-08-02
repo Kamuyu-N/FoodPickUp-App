@@ -48,7 +48,19 @@ public class KitchenDashboardActivity extends AppCompatActivity implements Kitch
     }
 
     private void loadActiveOrders() {
-        List<Order> activeOrders = orderDao.getActiveOrders();
+        com.example.foodpickupapp.util.SessionManager sessionManager = new com.example.foodpickupapp.util.SessionManager(this);
+        com.example.foodpickupapp.dao.UserDao userDao = new com.example.foodpickupapp.dao.UserDao(FoodPickupDbHelper.getInstance(this));
+        long restaurantId = -1;
+
+        long userId = sessionManager.getUserId();
+        if (userId > 0) {
+            com.example.foodpickupapp.model.User user = userDao.getUserById(userId);
+            if (user != null) {
+                restaurantId = user.getRestaurantId();
+            }
+        }
+
+        List<Order> activeOrders = orderDao.getActiveOrders(restaurantId);
         if (activeOrders.isEmpty()) {
             recyclerViewOrders.setVisibility(View.GONE);
             textEmptyOrders.setVisibility(View.VISIBLE);

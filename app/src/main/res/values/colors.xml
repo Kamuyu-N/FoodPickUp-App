@@ -1,12 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- ================================================================== -->
+    <!-- Brand Primary — warm amber/orange palette (appetizing, modern)     -->
+    <!-- ================================================================== -->
+    <color name="brand_primary">#FFEF6C00</color>         <!-- Deep amber 800 -->
+    <color name="brand_primary_dark">#FFE65100</color>     <!-- Deeper amber 900 -->
+    <color name="brand_primary_light">#FFFFB74D</color>    <!-- Amber 300 -->
+    <color name="brand_on_primary">#FFFFFFFF</color>
+
+    <!-- Secondary — warm brown accent -->
+    <color name="brand_secondary">#FF5D4037</color>        <!-- Brown 700 -->
+    <color name="brand_secondary_light">#FF8D6E63</color>  <!-- Brown 400 -->
+    <color name="brand_on_secondary">#FFFFFFFF</color>
+
+    <!-- ================================================================== -->
+    <!-- Neutrals — charcoal-based for modern feel                          -->
+    <!-- ================================================================== -->
+    <color name="text_primary">#FF1B1B1F</color>
+    <color name="text_secondary">#FF5F5F67</color>
+    <color name="text_hint">#FF9E9EA6</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_variant">#FFF5F1EB</color>       <!-- Warm off-white -->
+    <color name="background">#FFFAF8F5</color>            <!-- Warm cream background -->
+    <color name="divider">#FFE8E4DE</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- ================================================================== -->
+    <!-- Semantic / Status colors                                           -->
+    <!-- ================================================================== -->
+    <color name="success">#FF2E7D32</color>
+    <color name="warning">#FFF9A825</color>
+    <color name="error">#FFC62828</color>
+    <color name="info">#FF1565C0</color>
+
+    <!-- ================================================================== -->
+    <!-- Dashboard header gradient                                          -->
+    <!-- ================================================================== -->
+    <color name="header_gradient_start">#FFEF6C00</color>
+    <color name="header_gradient_end">#FFF4511E</color>    <!-- Deep orange 600 -->
+
+    <!-- ================================================================== -->
+    <!-- Legacy defaults (kept for compatibility)                           -->
+    <!-- ================================================================== -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 
     <!-- Menu UI colors (FOOD-11) -->
     <color name="price_green">#FF2E7D32</color>
@@ -20,12 +62,12 @@
 
     <!-- Order status stepper colors (FOOD-21) -->
     <color name="status_completed">#FF4CAF50</color>
-    <color name="status_current">#FF6200EE</color>
-    <color name="status_current_ring">#336200EE</color>
+    <color name="status_current">#FFEF6C00</color>         <!-- Updated to match brand -->
+    <color name="status_current_ring">#33EF6C00</color>
     <color name="status_pending">#FFBDBDBD</color>
     <color name="status_connector_done">#FF4CAF50</color>
     <color name="status_connector_pending">#FFE0E0E0</color>
-    <color name="status_message_bg">#FFF3E5F5</color>
+    <color name="status_message_bg">#FFFFF3E0</color>      <!-- Orange 50 for brand -->
 
     <!-- Payment colors (FOOD-15, FOOD-16) -->
     <color name="payment_success_green">#FF4CAF50</color>

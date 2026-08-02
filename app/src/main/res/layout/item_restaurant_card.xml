@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Individual restaurant location chip for the dashboard.
+     Inflated dynamically in MainActivity and added to containerRestaurants. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_location_chip"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_marginEnd="8dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_restaurant"
+        app:tint="@color/brand_primary"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/textRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:textColor="@color/text_primary"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/background"
     tools:context=".MenuActivity">
 
     <!-- Toolbar with back navigation -->
@@ -14,7 +13,8 @@
         android:id="@+id/toolbarMenu"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500"
+        android:layout_alignParentTop="true"
+        android:background="@color/brand_primary"
         app:title="@string/menu_title"
         app:titleTextColor="@color/white"
         app:navigationIcon="?attr/homeAsUpIndicator"
@@ -25,10 +25,11 @@
         android:id="@+id/textMenuEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbarMenu"
         android:gravity="center"
         android:text="@string/menu_empty"
         android:textSize="16sp"
-        android:textColor="@color/category_text"
+        android:textColor="@color/text_secondary"
         android:visibility="gone" />
 
     <!-- Menu items list -->
@@ -36,8 +37,24 @@
         android:id="@+id/recyclerMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbarMenu"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="88dp" />
 
-</LinearLayout>
+    <!-- Floating Action Button for Cart (FOOD-12) -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:text="Cart (0)"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_shopping_cart"
+        app:iconTint="@color/white"
+        app:backgroundTint="@color/brand_secondary"
+        app:elevation="6dp" />
+
+</RelativeLayout>

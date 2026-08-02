@@ -202,13 +202,23 @@ public class OrderDao {
      * Retrieves all active orders (PAID or PREPARING).
      * Ordered by creation date, oldest first, so staff prepares them in order.
      *
+     * @param restaurantId the restaurant ID to filter by, or -1 for all restaurants
      * @return a list of active orders
      */
-    public List<Order> getActiveOrders() {
+    public List<Order> getActiveOrders(long restaurantId) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String selection = OrderEntry.COLUMN_STATUS + " = ? OR " + OrderEntry.COLUMN_STATUS + " = ?";
-        String[] selectionArgs = { "PAID", "PREPARING" };
+        String selection;
+        String[] selectionArgs;
+
+        if (restaurantId > 0) {
+            selection = "(" + OrderEntry.COLUMN_STATUS + " = ? OR " + OrderEntry.COLUMN_STATUS + " = ?) AND " + OrderEntry.COLUMN_RESTAURANT_ID + " = ?";
+            selectionArgs = new String[]{ "PAID", "PREPARING", String.valueOf(restaurantId) };
+        } else {
+            selection = OrderEntry.COLUMN_STATUS + " = ? OR " + OrderEntry.COLUMN_STATUS + " = ?";
+            selectionArgs = new String[]{ "PAID", "PREPARING" };
+        }
+
         String orderBy = OrderEntry.COLUMN_CREATED_AT + " ASC";
 
         Cursor cursor = db.query(

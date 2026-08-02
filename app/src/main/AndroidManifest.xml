@@ -82,12 +82,25 @@
             android:theme="@style/Theme.FoodPickupApp"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Menu screen (FOOD-11) -->
+        <!-- Payment screen (FOOD-15) -->
         <activity
-            android:name=".MenuActivity"
+            android:name=".PaymentActivity"
             android:exported="false"
-            android:label="@string/menu_title"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/payment_title"
+            android:parentActivityName=".CheckoutActivity" />
+
+        <!-- Payment success screen (FOOD-16) -->
+        <activity
+            android:name=".PaymentSuccessActivity"
+            android:exported="false"
+            android:label="@string/payment_success_title" />
+
+        <!-- Order status screen (FOOD-21) -->
+        <activity
+            android:name=".OrderStatusActivity"
+            android:exported="false"
+            android:label="@string/order_status_title" />
+
     </application>
 
 </manifest>

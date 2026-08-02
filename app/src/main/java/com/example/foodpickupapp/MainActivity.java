@@ -2,6 +2,9 @@ package com.example.foodpickupapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,16 +14,18 @@ import com.example.foodpickupapp.database.FoodPickupDbHelper;
 import com.example.foodpickupapp.model.Restaurant;
 import com.example.foodpickupapp.util.SessionManager;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
 /**
- * Main screen for the FoodPickupApp.
- * Shows database status and restaurant locations after login.
+ * Main dashboard screen for the FoodPickupApp.
+ * Displays a branded header with user greeting, restaurant location chips,
+ * and role-aware quick-action cards (Browse Menu, Kitchen Dashboard, Admin Panel).
  *
  * Requires an active session — redirects to LoginActivity if not logged in.
  *
- * Ticket refs: FOOD-11 (View Menu navigation)
+ * Ticket refs: FOOD-11 (View Menu navigation), FOOD-18 (Kitchen Dashboard link)
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -40,58 +45,71 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        // Find views
-        TextView textDbStatus = findViewById(R.id.textDbStatus);
-        TextView textRestaurants = findViewById(R.id.textRestaurants);
+        // ------------------------------------------------------------------
+        // Header: populate welcome greeting with user email
+        // ------------------------------------------------------------------
+        TextView textUserEmail = findViewById(R.id.textUserEmail);
+        textUserEmail.setText(sessionManager.getUserEmail());
 
-        // Initialize the database (triggers table creation and seeding on first launch)
+        // ------------------------------------------------------------------
+        // Restaurant Locations: dynamically build chips from the database
+        // ------------------------------------------------------------------
         FoodPickupDbHelper dbHelper = FoodPickupDbHelper.getInstance(this);
-
-        // Read the seeded restaurants to verify the database is working
         RestaurantDao restaurantDao = new RestaurantDao(dbHelper);
         List<Restaurant> restaurants = restaurantDao.getAllRestaurants();
 
-        // Show the result on screen
-        if (!restaurants.isEmpty()) {
-            textDbStatus.setText(R.string.db_success);
+        LinearLayout containerRestaurants = findViewById(R.id.containerRestaurants);
+        LayoutInflater inflater = LayoutInflater.from(this);
 
-            // Build a simple list of restaurant names
-            StringBuilder sb = new StringBuilder("Registered Locations:\n\n");
-            for (Restaurant restaurant : restaurants) {
-                sb.append("• ").append(restaurant.getName()).append("\n");
-            }
-            textRestaurants.setText(sb.toString());
-        } else {
-            textDbStatus.setText(R.string.db_error);
+        for (Restaurant restaurant : restaurants) {
+            View chip = inflater.inflate(R.layout.item_restaurant_card, containerRestaurants, false);
+            TextView textName = chip.findViewById(R.id.textRestaurantName);
+            textName.setText(restaurant.getName());
+            containerRestaurants.addView(chip);
         }
 
-        // Set up "View Menu" button — navigates to MenuActivity (FOOD-11)
-        MaterialButton btnViewMenu = findViewById(R.id.btnViewMenu);
-        btnViewMenu.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, MenuActivity.class));
-        });
+        // ------------------------------------------------------------------
+        // Quick Actions: Browse Menu (visible to all logged-in users)
+        // ------------------------------------------------------------------
+        MaterialCardView cardBrowseMenu = findViewById(R.id.cardBrowseMenu);
+        cardBrowseMenu.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, MenuActivity.class))
+        );
 
-        // Set up "Kitchen Dashboard" button (FOOD-18)
-        MaterialButton btnKitchenDashboard = findViewById(R.id.btnKitchenDashboard);
-        if ("STAFF".equals(sessionManager.getUserRole())) {
-            btnKitchenDashboard.setVisibility(android.view.View.VISIBLE);
-            btnKitchenDashboard.setOnClickListener(v -> {
-                startActivity(new Intent(MainActivity.this, KitchenDashboardActivity.class));
-            });
-        } else {
-            btnKitchenDashboard.setVisibility(android.view.View.GONE);
+        // ------------------------------------------------------------------
+        // Quick Actions: Kitchen Dashboard (visible to STAFF only) (FOOD-18)
+        // ------------------------------------------------------------------
+        MaterialCardView cardKitchenDashboard = findViewById(R.id.cardKitchenDashboard);
+        String role = sessionManager.getUserRole();
+
+        if ("STAFF".equals(role)) {
+            cardKitchenDashboard.setVisibility(View.VISIBLE);
+            cardKitchenDashboard.setOnClickListener(v ->
+                    startActivity(new Intent(MainActivity.this, KitchenDashboardActivity.class))
+            );
         }
 
-        // Set up logout button if it exists in the layout
+        // ------------------------------------------------------------------
+        // Quick Actions: Admin Panel (visible to ADMIN only) (FOOD-8)
+        // ------------------------------------------------------------------
+        MaterialCardView cardAdminPanel = findViewById(R.id.cardAdminPanel);
+        if ("ADMIN".equals(role)) {
+            cardAdminPanel.setVisibility(View.VISIBLE);
+            cardAdminPanel.setOnClickListener(v ->
+                    startActivity(new Intent(MainActivity.this, AdminCreateStaffActivity.class))
+            );
+        }
+
+        // ------------------------------------------------------------------
+        // Logout
+        // ------------------------------------------------------------------
         MaterialButton btnLogout = findViewById(R.id.btnLogout);
-        if (btnLogout != null) {
-            btnLogout.setOnClickListener(v -> {
-                sessionManager.clearSession();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            });
-        }
+        btnLogout.setOnClickListener(v -> {
+            sessionManager.clearSession();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
     }
 }

@@ -5,6 +5,24 @@
     <string name="db_success">✓ Database initialized successfully</string>
     <string name="db_error">✗ Database initialization failed</string>
 
+    <!-- Dashboard (Sprint 1) -->
+    <string name="welcome_back">Welcome back,</string>
+    <string name="tagline_order_food">Order from your favourite campus cafés</string>
+    <string name="section_our_locations">Our Locations</string>
+    <string name="section_quick_actions">Quick Actions</string>
+    <string name="action_browse_menu">Browse Menu</string>
+    <string name="action_browse_menu_desc">Explore food from all campus cafés</string>
+    <string name="action_kitchen_dashboard">Kitchen Dashboard</string>
+    <string name="action_kitchen_dashboard_desc">View and manage incoming orders</string>
+    <string name="action_admin_panel">Admin Panel</string>
+    <string name="action_admin_panel_desc">Create staff accounts and manage the system</string>
+    <string name="user_avatar">User avatar</string>
+
+    <!-- Login / Register brand header -->
+    <string name="brand_welcome">Welcome to</string>
+    <string name="brand_login_subtitle">Sign in to order from campus cafés</string>
+    <string name="brand_register_subtitle">Create your account to get started</string>
+
     <!-- Login (FOOD-6) -->
     <string name="login_title">Login</string>
     <string name="hint_email">Email</string>
@@ -60,7 +78,7 @@
 
     <!-- Menu (FOOD-11) -->
     <string name="menu_title">Menu</string>
-    <string name="checkout_title">Checkout</string>
+    <string name="view_menu">View Menu</string>
     <string name="kitchen_dashboard_title">Kitchen Dashboard</string>
     <string name="menu_empty">No items available</string>
 
