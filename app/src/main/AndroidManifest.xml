@@ -54,25 +54,11 @@
             android:label="@string/checkout_title"
             android:parentActivityName=".CartActivity" />
 
-        <!-- Payment screen (FOOD-15) -->
+        <!-- Kitchen dashboard screen -->
         <activity
-            android:name=".PaymentActivity"
+            android:name=".KitchenDashboardActivity"
             android:exported="false"
-            android:label="@string/payment_title"
-            android:parentActivityName=".CheckoutActivity" />
-
-        <!-- Payment success screen (FOOD-16) -->
-        <activity
-            android:name=".PaymentSuccessActivity"
-            android:exported="false"
-            android:parentActivityName=".MenuActivity" />
-
-        <!-- Order status screen (FOOD-21) -->
-        <activity
-            android:name=".OrderStatusActivity"
-            android:exported="false"
-            android:label="@string/order_status_title"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/kitchen_dashboard_title" />
 
         <!-- Password reset screen (FOOD-7) -->
         <activity
